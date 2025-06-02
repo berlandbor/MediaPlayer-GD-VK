@@ -112,10 +112,34 @@ function renderPlayer() {
     if (url.endsWith('.mp3') || url.endsWith('.aac') || url.endsWith('.ogg') || url.endsWith('.wav')) {
       content = `<audio controls autoplay src="${url}" style="width:100%;max-width:520px;background:#000;"></audio>`;
     } else if (url.endsWith('.m3u8')) {
-      content = `<video controls autoplay src="${url}" style="width:100%;max-width:720px;background:#000;" poster="${poster}"></video>
-      <div style="color:#fff;font-size:0.95em;margin-top:8px;">
-      <b>Внимание:</b> Если поток не играет, попробуйте открыть в мобильном Chrome или Safari. Для полной поддержки .m3u8 используйте VLC или плееры с поддержкой HLS.
-      </div>`;
+      content = `<div style="display: flex; flex-direction: column; align-items: center; background: #222; padding: 16px; border-radius: 12px; max-width: 760px; margin: 0 auto;">
+  <video 
+    controls 
+    autoplay 
+    src="${url}" 
+    poster="${poster}" 
+    style="
+      width: 100%;
+      max-width: 720px;
+      background: #000;
+      border-radius: 8px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+      margin-bottom: 12px;
+      outline: none;
+    ">
+  </video>
+  <div style="
+      color: #fff;
+      font-size: 0.97em;
+      margin-top: 0;
+      background: rgba(0,0,0,0.5);
+      padding: 10px 14px;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;">
+    <b style="color: #ffd600;">Внимание:</b> Если поток не играет, попробуйте открыть в мобильном Chrome или Safari. Для полной поддержки .m3u8 используйте VLC или плееры с поддержкой HLS.
+  </div>
+</div>`;
     } else {
       content = `<iframe src="${url}" frameborder="0" allowfullscreen style="width:100%;min-height:360px;background:#000;"></iframe>`;
     }
