@@ -299,7 +299,7 @@ button:hover, select:hover {
   background: #19191a;
 }
 .video-responsive iframe,
-.video-responsive video,
+/*.video-responsive video,*/
 .video-responsive audio {
   position: absolute;
   top: 0; left: 0;
