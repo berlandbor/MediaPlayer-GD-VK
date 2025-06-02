@@ -298,9 +298,9 @@ button:hover, select:hover {
   overflow: hidden;
   background: #19191a;
 }
-.video-responsive iframe,
+.video-responsive iframe
 /*.video-responsive video,*/
-.video-responsive audio {
+/*.video-responsive audio*/ {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
