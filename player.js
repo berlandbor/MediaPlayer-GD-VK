@@ -143,11 +143,11 @@ function renderPlayer() {
     } else {
       content = `<iframe src="${url}" frameborder="0" allowfullscreen style="width:100%;min-height:360px;background:#000;"></iframe>`;
     }
-    /*playerContainer.innerHTML = `<div class="video-responsive">${content}</div>`;*/
+    playerContainer.innerHTML = `<div class="video-responsive">${content}</div>`;
     // Проверка загрузки потока
     setTimeout(() => {
       // Примитивная проверка для iframe/video/audio
-      const players = playerContainer.querySelectorAll("video,audio,iframe");
+      const players = playerContainer.querySelectorAll("video,iframe");/*,audio*/
       let hasError = false;
       players.forEach(el => {
         el.onerror = () => { hasError = true; streamError.style.display = "block"; };
