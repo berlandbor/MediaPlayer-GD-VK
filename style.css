@@ -294,7 +294,7 @@ button:hover, select:hover {
   position: relative;
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 соотношение */
-  height: 0;
+  height: 100px;
   overflow: hidden;
   background: #19191a;
 }
