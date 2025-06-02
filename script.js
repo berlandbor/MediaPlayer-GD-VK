@@ -1,7 +1,7 @@
+// script.js
 const playlistContainer = document.getElementById("playlist");
 const clearDbBtn = document.getElementById("clearDbBtn");
 const categoryFilter = document.getElementById("categoryFilter");
-const reloadBtn = document.getElementById('reloadPlaylistBtn');
 const fileInput = document.getElementById('fileInput');
 const loadFileBtn = document.getElementById('loadFileBtn');
 const loadUrlBtn = document.getElementById('loadUrlBtn');
@@ -23,24 +23,10 @@ window.addEventListener("DOMContentLoaded", () => {
       renderPlaylist([]);
     }
   } else {
-    loadDefaultPlaylist();
+    playlistContainer.innerHTML = "<p>Загрузите плейлист из файла или по ссылке.</p>";
+    updateFilterOptions([]);
   }
 });
-
-function loadDefaultPlaylist() {
-  fetch("playlist.json")
-    .then(res => res.json())
-    .then(data => {
-      currentPlaylist = data;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-      updateFilterOptions(data);
-      renderPlaylist(data);
-    })
-    .catch(err => {
-      console.error("Ошибка загрузки плейлиста:", err);
-      playlistContainer.innerHTML = "<p>❌ Не удалось загрузить плейлист.</p>";
-    });
-}
 
 // --- Кнопка очистки плейлиста ---
 clearDbBtn.addEventListener("click", () => {
@@ -49,9 +35,6 @@ clearDbBtn.addEventListener("click", () => {
   playlistContainer.innerHTML = "<p>📭 Плейлист очищен.</p>";
   updateFilterOptions([]);
 });
-
-// --- Кнопка загрузки дефолтного плейлиста ---
-reloadBtn.addEventListener('click', loadDefaultPlaylist);
 
 // --- Кнопка загрузки плейлиста из файла ---
 loadFileBtn.addEventListener('click', () => fileInput.click());
@@ -110,6 +93,10 @@ function getTileType(item) {
 
 function renderPlaylist(items) {
   playlistContainer.innerHTML = "";
+  if (!items.length) {
+    playlistContainer.innerHTML = "<p>Плейлист пуст. Загрузите плейлист из файла или по ссылке.</p>";
+    return;
+  }
   items.forEach(item => {
     const { title, poster, category } = item;
     const type = getTileType(item);
