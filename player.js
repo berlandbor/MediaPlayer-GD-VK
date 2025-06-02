@@ -112,7 +112,7 @@ function renderPlayer() {
     if (url.endsWith('.mp3') || url.endsWith('.aac') || url.endsWith('.ogg') || url.endsWith('.wav')) {
       content = `<audio controls autoplay src="${url}" style="width:100%;max-width:520px;background:#000;"></audio>`;
     } else if (url.endsWith('.m3u8')) {
-      content = `<div>
+      content = `<div style="display: flex; flex-direction: column; align-items: center; background: #222; padding: 16px; border-radius: 12px; max-width: 760px; margin: 0 auto;">
   <video 
     controls 
     autoplay 
@@ -128,10 +128,18 @@ function renderPlayer() {
       outline: none;
     ">
   </video>
-  <div>
+  <div style="
+      color: #fff;
+      font-size: 0.97em;
+      margin-top: 0;
+      background: rgba(0,0,0,0.5);
+      padding: 10px 14px;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;">
     <b style="color: #ffd600;">Внимание:</b> Если поток не играет, попробуйте открыть в мобильном Chrome или Safari. Для полной поддержки .m3u8 используйте VLC или плееры с поддержкой HLS.
   </div>
-</div>`;
+</div> `;
     } else {
       content = `<iframe src="${url}" frameborder="0" allowfullscreen style="width:100%;min-height:360px;background:#000;"></iframe>`;
     }
