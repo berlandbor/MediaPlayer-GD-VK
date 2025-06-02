@@ -109,8 +109,9 @@ function renderPlayer() {
     }
     // Определяем тип: аудио/видео/m3u8
     let content = "";
+    let contentAudio = "";
     if (url.endsWith('.mp3') || url.endsWith('.aac') || url.endsWith('.ogg') || url.endsWith('.wav')) {
-      content = `<audio controls autoplay src="${url}" style="width:100%;max-width:520px;background:#000;"></audio>`;
+      contentAudio = `<audio controls autoplay src="${url}" style="width:100%;max-width:520px;background:#000;"></audio>`;
     } else if (url.endsWith('.m3u8')) {
       content = `<div style="display: flex; flex-direction: column; align-items: center; background: #222; padding: 16px; border-radius: 12px; max-width: 760px; margin: 0 auto;">
   <video 
@@ -144,10 +145,11 @@ function renderPlayer() {
       content = `<iframe src="${url}" frameborder="0" allowfullscreen style="width:100%;min-height:360px;background:#000;"></iframe>`;
     }
     playerContainer.innerHTML = `<div class="video-responsive">${content}</div>`;
+    playerContainer.innerHTML = `<div class="Audio-responsive">${contentAudio}</div>`;
     // Проверка загрузки потока
     setTimeout(() => {
       // Примитивная проверка для iframe/video/audio
-      const players = playerContainer.querySelectorAll("video,iframe");/*,audio*/
+      const players = playerContainer.querySelectorAll("video, audio, iframe");/*,audio*/
       let hasError = false;
       players.forEach(el => {
         el.onerror = () => { hasError = true; streamError.style.display = "block"; };
