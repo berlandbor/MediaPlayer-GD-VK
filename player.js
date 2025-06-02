@@ -141,7 +141,7 @@ function renderPlayer() {
   </div>
 </div> `;
     } else {
-      content = `<iframe src="${url}" frameborder="0" allowfullscreen style="width:100%;min-height:450px;background:#000;"></iframe>`;
+      content = `<iframe src="${url}" frameborder="0" allowfullscreen style="width:100%;min-height:300px;background:#000;"></iframe>`;
     }
     playerContainer.innerHTML = `<div class="video-responsive">${content}</div>`;
     // Проверка загрузки потока
