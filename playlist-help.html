@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Инструкция: Как создать плейлист</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>🎬 Как создать универсальный плейлист для MediaPlayer</h1>
+
+  <p>Плейлист должен быть в формате <strong>JSON</strong>, содержать массив объектов, каждый из которых описывает видео Google Drive, VK или поток (радио/ТВ):</p>
+
+  <h2>🧱 Пример структуры</h2>
+  <pre><code>[
+  {
+    "title": "Операция Ы",
+    "id": "102M62qvjgiAVSK_-aEzxGoxxdvDqiFht",
+    "category": "Комедия",
+    "poster": "https://example.com/poster.jpg",
+    "description": "Советская комедия. Шурик и его приключения."
+  },
+  {
+    "title": "Ральф против Интернета",
+    "vk_oid": "821667109",
+    "vk_id": "456239126",
+    "vk_hash": "9ca5cd4888b0f794",
+    "category": "Мультфильм",
+    "poster": "https://example.com/poster2.jpg"
+  },
+  {
+    "title": "Танцевальное радио",
+    "url": "https://radiorecord.hostingradio.ru/techno96.aacp",
+    "category": "Радио",
+    "poster": "https://example.com/poster3.jpg"
+  }
+]</code></pre>
+
+  <h2>📌 Описание полей</h2>
+  <table>
+    <thead>
+      <tr><th>Поле</th><th>Тип</th><th>Описание</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>title</td><td>string</td><td>Название медиа (обязательно)</td></tr>
+      <tr><td>id</td><td>string</td><td>ID файла Google Drive (только для Google Drive-видео)</td></tr>
+      <tr><td>vk_oid</td><td>string</td><td>VK Owner ID (только для VK-видео)</td></tr>
+      <tr><td>vk_id</td><td>string</td><td>VK Video ID (только для VK-видео)</td></tr>
+      <tr><td>vk_hash</td><td>string</td><td>VK Hash (только для VK-видео)</td></tr>
+      <tr><td>url</td><td>string</td><td>Ссылка на потоковое видео/аудио/ТВ/радио (только для потоков)</td></tr>
+      <tr><td>category</td><td>string</td><td>Категория для фильтрации (необязательно)</td></tr>
+      <tr><td>poster</td><td>string</td><td>Ссылка на постер/картинку (необязательно)</td></tr>
+      <tr><td>description</td><td>string</td><td>Описание (необязательно)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>💾 Как загрузить плейлист</h2>
+  <ol>
+    <li>Положите файл <code>playlist.json</code> рядом с index.html</li>
+    <li>На главной странице выберите "Загрузить плейлист"</li>
+    <li>Для обновления плейлиста — перезагрузите через "Загрузить плейлист"</li>
+  </ol>
+
+  <h2>👨‍💻 О проекте</h2>
+  <p>Автор: <strong>Berlandbor</strong></p>
+  <p>Связь: <a href="https://t.me/Berlandbor" target="_blank">Telegram</a></p>
+</body>
+</html>

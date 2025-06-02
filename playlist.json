@@ -1,0 +1,48 @@
+[
+  {
+    "title": "Х/Ф: Операция Ы",
+    "id": "102M62qvjgiAVSK_-aEzxGoxxdvDqiFht",
+    "poster":"https://upload.wikimedia.org/wikipedia/ru/b/ba/%D0%9E%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F_%D0%AB_%D1%84%D0%B8%D0%BB%D1%8C%D0%BC_%D0%BF%D0%BB%D0%B0%D0%BA%D0%B0%D1%82.jpeg",
+    "category": "Комедия",
+    "description": "Советский комедийный художественный фильм, снятый в 1965 году режиссёром Леонидом Гайдаем."
+  },
+  {
+    "title": "Х/Ф: Бриллиантовая рука",
+    "id": "10iMYGXX8x6XauFVFk1yVB2jOOXWu4j-u",
+    "poster": "https://upload.wikimedia.org/wikipedia/ru/thumb/1/17/%D0%91%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D0%B0%D0%BD%D1%82%D0%BE%D0%B2%D0%B0%D1%8F_%D1%80%D1%83%D0%BA%D0%B0_Poster.jpg/330px-%D0%91%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D0%B0%D0%BD%D1%82%D0%BE%D0%B2%D0%B0%D1%8F_%D1%80%D1%83%D0%BA%D0%B0_Poster.jpg",
+    "category": "Комедия",
+    "description": "Советская эксцентрическая комедия, снятая в 1968 году режиссёром Леонидом Гайдаем."
+  },
+  {
+    "title": "М/Ф: Ральф против Интернета",
+    "vk_oid": "821667109",
+    "vk_id": "456239126",
+    "vk_hash": "9ca5cd4888b0f794",
+    "poster": "https://upload.wikimedia.org/wikipedia/ru/1/18/Ralph2poster.jpeg",
+    "category": "Приключение. Комедия",
+    "description": "«Ральф против Интернета» (англ. Ralph Breaks the Internet) — американский полнометражный компьютерно-анимационный фильм, продолжение мультфильма «Ральф»."
+  },
+  {
+    "title": "Х/Ф: Терминатор 4. Да придёт спаситель!",
+    "vk_oid": "-176294899",
+    "vk_id": "456248594",
+    "vk_hash": "e6eee4b60b892e8f",
+    "poster": "https://upload.wikimedia.org/wikipedia/ru/b/bf/Terminator_Salvation_poster.jpg",
+    "category": "Боевик. Фантастика.",
+    "description": "«Термина́тор: Да придёт спаситель» (англ. Terminator Salvation, также известен как «Терминатор 4») — фантастический боевик."
+  },
+  {
+    "title": "Radio Record Techno",
+    "url": "https://radiorecord.hostingradio.ru/techno96.aacp",
+    "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Radio_Record_Logo_2024.svg/1280px-Radio_Record_Logo_2024.svg.png",
+    "category": "Радио стрим",
+    "description": "Танцевальное радио, 24/7 техно стрим."
+  },
+  {
+    "title": "3ABN Russia",
+    "url": "https://3abn.bozztv.com/3abn2/Rus_live/smil:Rus_live.smil/playlist.m3u8",
+    "poster": "https://i.imgur.com/4fhBbam.png",
+    "category": "ТВ Стрим",
+    "description": "Круглосуточный российский телеканал."
+  }
+]

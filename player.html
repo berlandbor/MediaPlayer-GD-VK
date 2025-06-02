@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediaPlayer — Проигрыватель</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <img id="mediaPoster" style="max-width:200px;display:block;margin:16px auto;">
+  <h2 id="mediaTitle"></h2>
+  <div id="mediaCategory"></div>
+  <div id="mediaDescription"></div>
+
+  <button id="backToPlaylistBtn" class="back-btn">← Назад к плейлисту</button>
+  <button id="shareBtn" class="share-btn">Поделиться</button>
+  <hr>
+  <div id="player-container"></div>
+  <div id="streamError" class="error-msg" style="display:none;">
+    ⚠️ Поток не загружается или недоступен.
+  </div>
+  <script src="player.js"></script>
+  <script>
+    document.getElementById('backToPlaylistBtn').onclick = function() {
+      window.location.href = 'index.html';
+    };
+
+    document.getElementById('shareBtn').onclick = function() {
+      const url = window.location.href;
+      const title = document.getElementById('mediaTitle').innerText || '';
+      const desc = document.getElementById('mediaDescription').innerText || '';
+      const cat = document.getElementById('mediaCategory').innerText || '';
+      const poster = document.getElementById('mediaPoster').src || '';
+      let text = '';
+      if (title) text += `🎬 ${title}\n`;
+      if (cat) text += `Категория: ${cat}\n`;
+      if (desc) text += `${desc}\n`;
+      if (poster) text += `Постер: ${poster}\n`;
+      text += `Смотреть: ${url}`;
+
+      if (navigator.share) {
+        navigator.share({
+          title: title,
+          text: text,
+          url: url
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(text).then(() => {
+          alert('Ссылка и данные скопированы! Можно вставить в мессенджер.');
+        });
+      }
+    };
+  </script>
+</body>
+</html>
