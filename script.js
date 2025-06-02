@@ -2,6 +2,9 @@ const playlistContainer = document.getElementById("playlist");
 const clearDbBtn = document.getElementById("clearDbBtn");
 const categoryFilter = document.getElementById("categoryFilter");
 const reloadBtn = document.getElementById('reloadPlaylistBtn');
+const fileInput = document.getElementById('fileInput');
+const loadFileBtn = document.getElementById('loadFileBtn');
+const loadUrlBtn = document.getElementById('loadUrlBtn');
 const STORAGE_KEY = "universal_playlist";
 let currentPlaylist = [];
 
@@ -20,20 +23,24 @@ window.addEventListener("DOMContentLoaded", () => {
       renderPlaylist([]);
     }
   } else {
-    fetch("playlist.json")
-      .then(res => res.json())
-      .then(data => {
-        currentPlaylist = data;
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        updateFilterOptions(data);
-        renderPlaylist(data);
-      })
-      .catch(err => {
-        console.error("Ошибка загрузки плейлиста:", err);
-        playlistContainer.innerHTML = "<p>❌ Не удалось загрузить плейлист.</p>";
-      });
+    loadDefaultPlaylist();
   }
 });
+
+function loadDefaultPlaylist() {
+  fetch("playlist.json")
+    .then(res => res.json())
+    .then(data => {
+      currentPlaylist = data;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      updateFilterOptions(data);
+      renderPlaylist(data);
+    })
+    .catch(err => {
+      console.error("Ошибка загрузки плейлиста:", err);
+      playlistContainer.innerHTML = "<p>❌ Не удалось загрузить плейлист.</p>";
+    });
+}
 
 // --- Кнопка очистки плейлиста ---
 clearDbBtn.addEventListener("click", () => {
@@ -43,18 +50,44 @@ clearDbBtn.addEventListener("click", () => {
   updateFilterOptions([]);
 });
 
-// --- Кнопка загрузки плейлиста ---
-reloadBtn.addEventListener('click', () => {
-  fetch('playlist.json')
+// --- Кнопка загрузки дефолтного плейлиста ---
+reloadBtn.addEventListener('click', loadDefaultPlaylist);
+
+// --- Кнопка загрузки плейлиста из файла ---
+loadFileBtn.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      currentPlaylist = data;
+      updateFilterOptions(data);
+      renderPlaylist(data);
+      alert('Плейлист загружен из файла!');
+    } catch (err) {
+      alert('Ошибка: Некорректный JSON!');
+    }
+  };
+  reader.readAsText(file, 'utf-8');
+});
+
+// --- Кнопка загрузки плейлиста по ссылке ---
+loadUrlBtn.addEventListener('click', () => {
+  const url = prompt('Введите прямую ссылку на JSON-плейлист:', 'https://');
+  if (!url) return;
+  fetch(url)
     .then(res => res.json())
     .then(data => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
       currentPlaylist = data;
-      renderPlaylist(data);
       updateFilterOptions(data);
-      alert('Плейлист обновлён!');
+      renderPlaylist(data);
+      alert('Плейлист загружен по ссылке!');
     })
-    .catch(() => alert('Ошибка загрузки плейлиста!'));
+    .catch(() => alert('Ошибка загрузки плейлиста по ссылке!'));
 });
 
 // --- Фильтр по категориям ---
